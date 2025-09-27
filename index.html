@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeria Premium 🔒+🎬</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+<header>
+  <h1>Galeria Premium 🔒+🎬</h1>
+</header>
+
+<!-- Botão flutuante de tema -->
+<button id="toggleTheme">🌑</button>
+
+<!-- LOGIN -->
+<div class="login-box" id="loginBox">
+  <h2>Faça login</h2>
+  <input type="text" id="usuarioLogin" placeholder="Usuário" autofocus>
+  <input type="password" id="senhaLogin" placeholder="Senha">
+  <button id="loginBtn">Entrar</button>
+  <button id="showCadastroBtn" class="small-btn">Cadastrar</button>
+  <div class="error" id="error-msg"></div>
+</div>
+
+<!-- CADASTRO -->
+<div class="login-box" id="cadastroBox" style="display:none;">
+  <h2>Cadastro de Usuário</h2>
+  <input type="text" id="usuarioCadastro" placeholder="Novo usuário">
+  <input type="password" id="senhaCadastro" placeholder="Senha">
+  <button id="cadastroBtn">Cadastrar</button>
+  <button id="voltarLoginBtn" class="small-btn">Voltar</button>
+  <div class="error" id="cadError-msg"></div>
+</div>
+
+<!-- GALERIA -->
+<main id="conteudo-galeria" style="display:none;">
+  <div class="upload-wrapper">
+    <input type="file" id="uploadInput" multiple accept="image/*,video/*" style="display:none;">
+    <label><input type="checkbox" id="protegerCheck"> Proteger com senha 🔒</label>
+    <button id="uploadBtn">⬆️ Adicionar Fotos/Vídeos</button>
+  </div>
+
+  <section class="galeria-wrapper">
+    <h3>Fotos</h3>
+    <div class="galeria-grid" id="galeriaFotos" data-senha="1234"></div>
+  </section>
+
+  <section class="galeria-wrapper">
+    <h3>Vídeos</h3>
+    <div class="galeria-grid" id="galeriaVideos" data-senha="5678"></div>
+  </section>
+</main>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-background" onclick="fecharModal()"></div>
+  <button class="fechar">&times;</button>
+  <div class="modal-content-wrapper">
+    <span class="modal-arrow left" onclick="mostrarAnterior()">&#10094;</span>
+    <span class="modal-arrow right" onclick="mostrarProximo()">&#10095;</span>
+    <img class="modal-conteudo" id="imgModal" alt="">
+    <video class="modal-video" controls style="display:none;"></video>
+    <div id="caption"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
