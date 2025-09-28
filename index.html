@@ -10,6 +10,8 @@
 
 <header>
   <h1>Galeria Premium 🔒+🎬</h1>
+  <button id="logoutBtn" style="display:none;">Sair</button>
+  <button id="configBtn" style="display:none;">⚙️ Configurações</button>
 </header>
 
 <!-- Botão flutuante de tema -->
@@ -22,6 +24,7 @@
   <input type="password" id="senhaLogin" placeholder="Senha">
   <button id="loginBtn">Entrar</button>
   <button id="showCadastroBtn" class="small-btn">Cadastrar</button>
+  <button id="esqueciSenhaBtn" class="small-btn">Esqueci a senha</button>
   <div class="error" id="error-msg"></div>
 </div>
 
@@ -30,40 +33,71 @@
   <h2>Cadastro de Usuário</h2>
   <input type="text" id="usuarioCadastro" placeholder="Novo usuário">
   <input type="password" id="senhaCadastro" placeholder="Senha">
+  <input type="text" id="rgCadastro" placeholder="RG">
   <button id="cadastroBtn">Cadastrar</button>
   <button id="voltarLoginBtn" class="small-btn">Voltar</button>
   <div class="error" id="cadError-msg"></div>
 </div>
 
+<!-- ESQUECI SENHA -->
+<div class="login-box" id="esqueciBox" style="display:none;">
+  <h2>Recuperar Senha</h2>
+  <input type="text" id="usuarioRG" placeholder="Usuário">
+  <input type="text" id="rgInput" placeholder="RG">
+  <input type="password" id="novaSenhaEsqueci" placeholder="Nova senha">
+  <button id="resetSenhaBtn">Redefinir Senha</button>
+  <button id="voltarLogin2Btn" class="small-btn">Voltar</button>
+  <div class="error" id="esqueci-msg"></div>
+</div>
+
+<!-- CONFIGURAÇÕES -->
+<div class="login-box" id="configBox" style="display:none;">
+  <h2>Configurações</h2>
+  <input type="password" id="senhaAtual" placeholder="Senha atual">
+  <input type="password" id="novaSenha" placeholder="Nova senha">
+  <button id="trocarSenhaBtn" type="button">Trocar Senha</button>
+  <button id="voltarGaleriaBtn" class="small-btn" type="button">Voltar</button>
+  <div class="error" id="config-msg"></div>
+</div>
+
 <!-- GALERIA -->
 <main id="conteudo-galeria" style="display:none;">
-  <div class="upload-wrapper">
+  <div class="upload-wrapper" id="uploadArea">
     <input type="file" id="uploadInput" multiple accept="image/*,video/*" style="display:none;">
     <label><input type="checkbox" id="protegerCheck"> Proteger com senha 🔒</label>
-    <button id="uploadBtn">⬆️ Adicionar Fotos/Vídeos</button>
+    <input type="password" id="senhaArquivo" placeholder="Senha do arquivo" style="display:none;">
+    <button id="uploadBtn">⬆️ Selecionar Arquivos</button>
+    <p class="drag-msg">ou arraste aqui</p>
+  </div>
+
+  <div id="previewArea" style="display:none;">
+    <h3>Pré-visualização</h3>
+    <div id="previewGrid"></div>
+    <button id="confirmUploadBtn">Confirmar Upload</button>
+    <button id="cancelUploadBtn" class="small-btn">Cancelar</button>
   </div>
 
   <section class="galeria-wrapper">
     <h3>Fotos</h3>
-    <div class="galeria-grid" id="galeriaFotos" data-senha="1234"></div>
+    <div class="galeria-grid" id="galeriaFotos"></div>
   </section>
 
   <section class="galeria-wrapper">
     <h3>Vídeos</h3>
-    <div class="galeria-grid" id="galeriaVideos" data-senha="5678"></div>
+    <div class="galeria-grid" id="galeriaVideos"></div>
   </section>
 </main>
 
-<!-- MODAL -->
+<!-- MODAL VISUALIZAÇÃO -->
 <div id="modal" class="modal">
   <div class="modal-background" onclick="fecharModal()"></div>
   <button class="fechar">&times;</button>
   <div class="modal-content-wrapper">
-    <span class="modal-arrow left" onclick="mostrarAnterior()">&#10094;</span>
-    <span class="modal-arrow right" onclick="mostrarProximo()">&#10095;</span>
     <img class="modal-conteudo" id="imgModal" alt="">
     <video class="modal-video" controls style="display:none;"></video>
-    <div id="caption"></div>
+    <input type="password" id="passwordModalInput" placeholder="Senha" style="display:none;">
+    <button id="passwordConfirmBtn" style="display:none;">Confirmar</button>
+    <div class="error" id="passwordError"></div>
   </div>
 </div>
 
